@@ -10,7 +10,7 @@
 -author("lu").
 
 %% API
--export([add/2, factorial/1, area/3, area/1, speak/1]).
+-export([add/2, factorial/1, area/3, area/1, speak/1,factorial/2]).
 
 add(X, Y) -> %% Head
   X + Y.     %% Body
@@ -43,3 +43,9 @@ speak(Animal) ->
             true -> invalid
          end,
   io:format("~w says ~w ~n", [Animal, Talk]).
+
+%% Acc
+factorial(N, TotalFactorial) when N > 0 ->
+  factorial(N-1, N*TotalFactorial);
+factorial(0, TotalFactorial)->
+  TotalFactorial.
