@@ -4,13 +4,13 @@
 %%% @doc
 %%%
 %%% @end
-%%% Created : 10. 十二月 2017 22:13
+%%% Created : 10. 十二月 2017 22:19
 %%%-------------------------------------------------------------------
--module(main).
+-module(easy).
 -author("lu").
 
--export([hello/0]).
+%% API
+-export([add/2]).
 
-
-hello() ->
-  io:format("ok").
+add(X, Y) -> %% Head
+  X + Y.     %% Body
