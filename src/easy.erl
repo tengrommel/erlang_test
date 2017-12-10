@@ -10,7 +10,7 @@
 -author("lu").
 
 %% API
--export([add/2, factorial/1, area/3, area/1, speak/1,factorial/2]).
+-export([add/2, factorial/1, area/3, area/1, speak/1,factorial/2, say_something/2, start_concurrency/2]).
 
 add(X, Y) -> %% Head
   X + Y.     %% Body
@@ -44,8 +44,18 @@ speak(Animal) ->
          end,
   io:format("~w says ~w ~n", [Animal, Talk]).
 
-%% Acc
+%% Accumulators
 factorial(N, TotalFactorial) when N > 0 ->
   factorial(N-1, N*TotalFactorial);
 factorial(0, TotalFactorial)->
   TotalFactorial.
+
+say_something(_, 0) ->
+  io:format("Done");
+say_something(Value, Times) ->
+  io:format("~s ~n", [Value]),
+  say_something(Value, Times-1).
+
+start_concurrency(Value1, Value2) ->
+  spawn(easy, say_something, [Value1, 3]),
+  spawn(easy, say_something, [Value2, 3]).
