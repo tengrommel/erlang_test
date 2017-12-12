@@ -66,12 +66,12 @@ messageRec()->
       io:format("Factorial for ~p is ~p ~n", [Int, factorial(Int, 1)]),
       messageRec();
     {factorialRecorder, Int}->
-      {ok, IoDevice} = file:open("C:\\", write),
+      {ok, IoDevice} = file:open("C:\\Users\\lu\\Documents\\ConC.dat", write),
       factorialRecorder(Int, 1, IoDevice),
       io:format("Factorial Recorder Done.~n", []),
       file:close(IoDevice),
       messageRec();
-    Other->
+    Other-> %% 其他的可能
       io:format("Invalid Match for ~p~n", [Other]),
       messageRec()
   end.
